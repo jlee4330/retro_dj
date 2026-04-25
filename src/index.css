@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --led-green: #39ff14;
+  --led-red: #ff1744;
+  --led-amber: #ffab00;
+  --led-cyan: #00e5ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: #ccc;
+  font-family: 'Share Tech Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Segment display feel */
+.segment-display {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.05);
+  border-radius: 2px;
+  padding: 6px 10px;
+  color: var(--led-green);
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 8px currentColor;
+  letter-spacing: 2px;
+}
+
+.segment-display.amber { color: var(--led-amber); }
+.segment-display.red { color: var(--led-red); }
+.segment-display.cyan { color: var(--led-cyan); }
+
+/* Retro panel style */
+.retro-panel {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 1px solid #444;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Retro button */
+.retro-btn {
+  background: linear-gradient(180deg, #444 0%, #2a2a2a 100%);
+  border: 1px solid #555;
+  border-radius: 3px;
+  color: #ccc;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.1s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.retro-btn:hover {
+  background: linear-gradient(180deg, #555 0%, #333 100%);
+}
+.retro-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.retro-btn.active {
+  background: linear-gradient(180deg, #1a3a1a 0%, #0a2a0a 100%);
+  border-color: var(--led-green);
+  color: var(--led-green);
+  text-shadow: 0 0 6px var(--led-green);
+}
+.retro-btn.danger {
+  border-color: var(--led-red);
+  color: var(--led-red);
+}
+.retro-btn.danger:hover {
+  text-shadow: 0 0 6px var(--led-red);
+}
+
+/* LED indicator */
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid #555;
+  transition: all 0.2s;
+}
+.led.on {
+  background: var(--led-green);
+  box-shadow: 0 0 6px var(--led-green), 0 0 12px var(--led-green);
+}
+.led.on-red {
+  background: var(--led-red);
+  box-shadow: 0 0 6px var(--led-red), 0 0 12px var(--led-red);
+}
+.led.on-amber {
+  background: var(--led-amber);
+  box-shadow: 0 0 6px var(--led-amber), 0 0 12px var(--led-amber);
+}
+
+/* Range slider retro style */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 3px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 24px;
+  background: linear-gradient(180deg, #666 0%, #333 100%);
+  border: 1px solid #777;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 24px;
+  background: linear-gradient(180deg, #666 0%, #333 100%);
+  border: 1px solid #777;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Crossfader */
+input[type="range"].crossfader {
+  height: 8px;
+  background: linear-gradient(90deg, var(--led-cyan), #333 45%, #333 55%, var(--led-amber));
+}
+
+/* Waveform container */
+.waveform-container {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 2px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+  overflow: hidden;
+}
+
+/* Level meter bars */
+.meter-bar {
+  width: 6px;
+  border-radius: 1px;
+  transition: height 0.05s;
+}
+
+/* Knob style for volume/filter */
+.retro-knob {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 40% 35%, #666, #222);
+  border-radius: 50%;
+  border: 2px solid #555;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+  position: relative;
+  cursor: pointer;
+}
+.retro-knob::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 1px;
+}
+
+/* Blink animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.blink {
+  animation: blink 1s ease-in-out infinite;
+}
+
+/* Spin animation for disc */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.disc-spin {
+  animation: spin 2s linear infinite;
+}
+.disc-spin.paused {
+  animation-play-state: paused;
+}
+
+/* Screw decoration */
+.screw {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 40% 35%, #888, #333);
+  border-radius: 50%;
+  border: 1px solid #555;
+  position: relative;
+}
+.screw::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+  color: #222;
+  line-height: 1;
+}
+
+/* Brand label */
+.brand-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* Status text animation */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
